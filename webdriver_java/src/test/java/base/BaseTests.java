@@ -18,6 +18,7 @@ import utils.WindowManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLOutput;
 
 public class BaseTests {
 
@@ -28,6 +29,7 @@ public class BaseTests {
     public void setUp() {
         var driverExtention = "";
         if (System.getenv("RUNNER_OS") != null) {
+            System.out.println("Using linux driver");
             driverExtention = "-linux";
         }
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver" + driverExtention);
@@ -66,7 +68,8 @@ public class BaseTests {
     private ChromeOptions getChromeOptions() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("disable-infobars");
-        //options.setHeadless(true);
+        var headless = Boolean.parseBoolean(System.getenv("HEADLESS_CHROME")) | false;
+        options.setHeadless(true);
         return options;
     }
 
