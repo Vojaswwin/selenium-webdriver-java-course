@@ -30,4 +30,4 @@ jobs:
         if: always()
         run: |
           echo "TOTAL_DURATION=$(expr $(date +%s) - ${START_TIME})"
-          .webdriver_java/resources/test_result_script.sh
+          ./resources/test_result_script.sh
