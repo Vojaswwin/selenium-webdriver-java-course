@@ -69,7 +69,7 @@ public class BaseTests {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("disable-infobars");
         var headless = Boolean.parseBoolean(System.getenv("HEADLESS_CHROME")) | false;
-        options.setHeadless(true);
+        options.setHeadless(headless);
         return options;
     }
 
